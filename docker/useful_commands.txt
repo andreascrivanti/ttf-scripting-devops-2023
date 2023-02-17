@@ -1,0 +1,28 @@
+sudo yum install docker
+sudo service docker status
+sudo service docker start
+
+
+hello_world_params:
+sudo docker build -t hello_world_params .
+sudo docker run --name hello_world_andrea -e "NAME=Andrea" hello_world_params
+
+web_server
+sudo docker build -t web_server .
+sudo docker run --name web_server_container web_server
+sudo docker run -d --name web_server_container -p 80:80 web_server
+
+sudo docker run -d --name web_server_container -v ./html:/usr/share/nginx/html -p 80:80 web_server
+sudo docker run -d --name web_server_container -v $(pwd)/html:/usr/share/nginx/html -p 80:80 web_server
+
+sudo docker exec -it web_server_container /bin/bash
+
+sudo docker run -d --name shift_chipher_container -t -v $(pwd)/code:/code shift_chipher
+
+
+
+cipher_shift
+
+#copiare codice in code
+sudo docker run -d --name shift_chipher_container -t -e "CIPHER_KEY=10" -v $(pwd)/code:/code shift_chipher
+
